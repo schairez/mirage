@@ -17,3 +17,4 @@
 NOTES.txt 
 config.toml
 config.example.toml
+.cache/

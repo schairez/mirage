@@ -20,7 +20,8 @@ COPY . .
 ENV PORT 5000
 
 # RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
-RUN go run cmd/app/main.go 
+# RUN go run cmd/app/main.go 
 
+CMD [ "go", "run", "cmd/app/main.go" ]
 
-CMD [ "./mirage" ]
+# CMD [ "./mirage" ]

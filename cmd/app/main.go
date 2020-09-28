@@ -5,6 +5,7 @@ import (
 	"os"
 
 	_ "github.com/lib/pq"
+	"github.com/schairez/mirage/database"
 )
 
 // func Connect(host string, port int, user string, password string, dbname string) (*sql.DB, error) {
@@ -27,7 +28,16 @@ type User struct {
 
 func main() {
 	fmt.Println("yo")
-	fmt.Println(os.Getenv("POSTGRES_HOST"))
+	dbDSN := os.Getenv("DB_DSN")
+	fmt.Println(dbDSN)
+	if dbDSN == "" {
+		panic("dbDSN is invalid")
+	}
+
+	_, err := database.New(dbDSN)
+	if err != nil {
+		panic(err)
+	}
 	// Create DB pool
 	// cfg :=
 	// db, err := database.New()
